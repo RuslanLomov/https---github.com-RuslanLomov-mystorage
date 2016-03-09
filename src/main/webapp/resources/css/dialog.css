@@ -1,0 +1,96 @@
+/* for dialog window */
+#mask {
+	top: 0;
+	position: absolute;
+	z-index: 9000;
+	background-color: white;
+	display: none;
+	position: absolute;
+}
+
+#boxes .window {
+	background-color: white;
+	position: fixed;
+	/* 	width: 440px; */
+	/* 	height: 200px; */
+	display: none;
+	z-index: 9999;
+	/* 	padding: 20px; */
+}
+/* , div#create_new_folder, div#rename_folder, div#rename_file */
+#boxes #create_new_folder_window, #rename_folder_window,
+	#rename_file_window {
+	background-color: white;
+	width: 20%;
+	height: 20%;
+	border: 1px black solid;
+}
+
+/* #create_new_folder #rename_folder #rename_file */
+#create_new_folder_window, #rename_folder_window, #rename_file_window  input
+	{
+	background: white;
+	border: 1px black solid;
+}
+
+input#folder_name, input#file_name {
+	width: 77%;
+	padding: 2%;
+	font-size: 25px;
+}
+
+input#folder_name_submit, input#rename_folder_submit, input#rename_file_submit
+	{
+	cursor: pointer;
+	font-size: 15px;
+}
+
+a#window-close {
+	font-size: 15px;
+	color: black;
+	border: 1px black solid;
+}
+
+#feed-name {
+	color: black;
+}
+
+table.modalWindow {
+	color: black;
+	background: white;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+/*_________________________________________________________________________*/
+#file_viewer_mask {
+	top: 0;
+	position: absolute;
+	z-index: 9000;	
+	display: none;
+}
+
+#file_viewer_boxes .file_viewer {
+	display: none;
+	z-index: 9999;
+}
+
+#file_viewer_window {
+	top: 0;
+	position: absolute;
+	background-color: white;	
+}
+
+a#window_close {
+	font-size: 15px;
+	color: black;	
+}
+
+#img_src img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#img_src {
+	position: relative;
+}

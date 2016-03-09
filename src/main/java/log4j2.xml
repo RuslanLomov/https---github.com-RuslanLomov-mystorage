@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration packages="com.emergentsys.e2ks.core.error.controllers">
+
+	<Properties>
+		<Property name="pathToLog">D:\\javaTest\\</Property>
+	</Properties>
+
+	<appenders>
+
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L] - %m%n" />
+		</Console>
+
+		<RollingFile name="FILE" fileName="${sys:pathToLog}/mystorage.log"
+			filePattern="${sys:pathToLog}/%d{yyyy-MM-dd}.log.gz">
+			<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}] - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+
+		<Async name="ASYNC">
+			<AppenderRef ref="CONSOLE" />
+			<AppenderRef ref="FILE" />
+		</Async>
+
+	</appenders>
+	<loggers>
+		<root level="info">
+			<appender-ref ref="ASYNC" />
+		</root>
+
+		<logger name="MyLogger_ALL" level="All" additivity="false">
+			<appender-ref ref="ASYNC" />
+		</logger>
+	</loggers>
+</configuration>

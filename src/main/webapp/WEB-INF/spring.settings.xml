@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd  
+       ">
+
+	<mvc:annotation-driven />
+
+
+	<context:component-scan base-package="trainee.controller"></context:component-scan>
+	<context:component-scan base-package="trainee.general.controller"></context:component-scan>
+	<!-- <context:component-scan base-package="trainee"></context:component-scan> -->
+
+<!-- 	<bean id="multipartResolver" -->
+<!-- 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
+<!-- 	<property name="maxUploadSize" value="10000000" /> -->
+<!-- 	</bean> -->
+
+	<!-- Datasource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7109877" />
+		<property name="username" value="sql7109877" />
+		<property name="password" value="zY5iZh8xug" />
+	</bean>
+
+	<!-- Definition for items dao (jdbc template) -->
+	<bean id="usersJdbcTemplate" class="trainee.dao.impl.UserDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="filesJdbcTemplate" class="trainee.dao.impl.FileDataDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="userFacadeImpl" class="trainee.facade.impl.UserFacadeImpl" />
+	<bean id="fileDataFacadeImpl" class="trainee.facade.impl.FileDataFacadeImpl" />
+
+	<!-- View resolver config -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+</beans>
